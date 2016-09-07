@@ -5,14 +5,9 @@
  */
 package alexandre.letteridentification.service;
 
-import alexandre.letteridentification.dao.JpaUtil;
-import alexandre.letteridentification.dao.StatisticsDao;
-import alexandre.letteridentification.dao.WeightsDao;
-import alexandre.letteridentification.model.Statistics;
-import alexandre.letteridentification.model.Weights;
-import alexandre.letteridentification.util.NeuralNetwork;
-import alexandre.letteridentification.util.Neuron;
-import alexandre.letteridentification.util.Synapse;
+import alexandre.letteridentification.dao.*;
+import alexandre.letteridentification.model.*;
+import alexandre.letteridentification.util.*;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Transparency;
@@ -574,5 +569,44 @@ public class Service
             
             return s;
         }
+    }
+    
+    public Administrator createAdministrator(String email, String password) throws Throwable
+    {
+        if (findAdministratorByEmail(email) == null)
+        {
+            Administrator a = new Administrator(email, password);
+            
+            JpaUtil.creerEntityManager();
+            
+            AdministratorDao dao = new AdministratorDao();
+            
+            JpaUtil.ouvrirTransaction();
+            
+            dao.create(a);
+            
+            JpaUtil.validerTransaction();
+            
+            JpaUtil.fermerEntityManager();
+            
+            return a;
+        }
+        else
+        {
+            return null;
+        }
+    }
+    
+    public Administrator findAdministratorByEmail(String email) throws Throwable
+    {
+        JpaUtil.creerEntityManager();
+        
+        AdministratorDao dao = new AdministratorDao();
+        
+        Administrator a = dao.findById(email);
+        
+        JpaUtil.fermerEntityManager();
+        
+        return a;
     }
 }

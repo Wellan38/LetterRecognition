@@ -17,7 +17,7 @@ import javax.imageio.ImageIO;
  */
 public class Main {
     
-    public static String path = "C:\\Users\\alexa\\OneDrive\\Documents\\NetBeansProjects\\LetterIdentificationServer\\src\\main\\webapp\\Training";
+    public static String path = "C:\\Users\\alexa\\OneDrive\\Documents\\NetBeansProjects\\LetterRecognitionServer\\src\\main\\webapp\\Training";
     
     public static void main(String[] args) throws Throwable
     {
@@ -65,7 +65,7 @@ public class Main {
         /*
         NeuralNetwork net = serv.createNetwork();
         
-        BufferedImage imA = ImageIO.read(new File("C:\\Users\\alexa\\OneDrive\\Documents\\NetBeansProjects\\LetterIdentificationServer\\src\\main\\webapp\\Training\\A\\5.png"));
+        BufferedImage imA = ImageIO.read(new File("C:\\Users\\alexa\\OneDrive\\Documents\\NetBeansProjects\\LetterRecognitionServer\\src\\main\\webapp\\Training\\A\\5.png"));
         
         Double[] inA = serv.getCenteredImage(imA);
         
@@ -76,6 +76,8 @@ public class Main {
             System.out.println((char)(i+65) + " : " + res[i]);
         }
         */
+        
+        serv.createAdministrator("administrator@letterrecognition.com", "youcouldbemine38");
     }
 }
 

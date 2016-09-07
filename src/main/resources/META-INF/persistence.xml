@@ -4,6 +4,7 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>alexandre.letteridentification.model.Weights</class>
     <class>alexandre.letteridentification.model.Statistics</class>
+    <class>alexandre.letteridentification.model.Administrator</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/letteridentification?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
